@@ -1,0 +1,29 @@
+﻿@using WebApp.Models.Offres
+@model OffreViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Détail de l'offre</h2>
+<div class="container bg-primary" style="padding-bottom: 2rem;">
+    <h3>@Model.Intitule</h3>
+    <h4>Responsable : @Model.Responsable</h4>
+    <p class="bg-info" style="color: #333; padding: 2rem;">@Model.Description</p>
+
+    <div>
+        Réf: #@Model.Id<br />
+        Date de publication : @Model.Date<br />
+        Salaire : @Model.Salaire £
+    </div>
+
+    <hr />
+
+    @if (Model.HasPostuled)
+    {
+        <a href="@Url.Action("RegisterPostulation", "Detail", new { id = Model.Id })" class="btn btn-danger">Enlever la postulation</a>
+    }
+    else
+    {
+        <a href="@Url.Action("RegisterPostulation", "Detail", new { id = Model.Id })" class="btn btn-success">Je postule</a>
+    }
+</div>

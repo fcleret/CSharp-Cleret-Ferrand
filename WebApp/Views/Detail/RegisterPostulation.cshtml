@@ -1,0 +1,15 @@
+﻿@using WebApp.Models.Offres
+@model OffreViewModel
+@{
+    ViewBag.Title = "Information";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="container bg-success" style="padding-bottom: 2rem;">
+    <h3>Modification effectué</h3>
+    <p>Offre modifié : @Model.Intitule</p>
+
+    <hr />
+
+    <a href="@Url.Action("Index", "Detail" , new { id=Model.Id })" class="btn btn-success">Retour</a>
+</div>

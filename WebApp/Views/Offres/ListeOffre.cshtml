@@ -1,0 +1,10 @@
+﻿<h3>Liste des offres</h3>
+<div>
+@foreach (var offre in Model)
+{
+    <a href="@Url.Action("Index", "Detail", new { id = @offre.Id })" class="container-fluid bg-info" style="display: block; color: #333; margin: 1rem; cursor: pointer;">
+        <h4>@offre.Intitule</h4>
+        <div>@offre.Date</div>
+    </a>
+}
+</div>

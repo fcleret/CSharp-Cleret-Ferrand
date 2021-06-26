@@ -1,0 +1,20 @@
+﻿@using WebApp.Models.Offres
+@model List<OffreViewModel>
+@{
+    ViewBag.Title = "Liste des offres";
+}
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <form style="margin: 3rem">
+        <label>Rechercher une offre</label>
+        <div>
+            @Html.TextBox("searchBar", "", new { placeholder = "Rechercher..." })
+            <input type="submit" />
+        </div>
+    </form>
+
+    <div class="container-fluid bg-primary">
+        @Html.Partial("ListeOffre")
+    </div>
+</div>
