@@ -17,13 +17,14 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*" />
             <RowDefinition Height="12*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="Crimson">
             <Label HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold">Liste des offres</Label>
         </DockPanel>
 
-        <TextBox Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Grid.Row="1" Grid.Column="0"></TextBox>
+        <TextBox Text="{Binding TextSearch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></TextBox>
 
         <ListView Grid.Row="2" Grid.Column="0" Background="LightCyan" ItemsSource="{Binding Offres, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedOffre, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
             <ListView.View>
@@ -34,7 +35,9 @@
             </ListView.View>
         </ListView>
 
-        <Grid Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" Background="LightGray">
+        <Button Grid.Row="3" Grid.Column="0" Background="DarkGray" Foreground="White" Command="{Binding AddOffre}">Ajouter</Button>
+
+        <Grid Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Background="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>

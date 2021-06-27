@@ -24,7 +24,8 @@ namespace WindowApp
 
         private DetailOffreVM _selectedOffre;
         private ObservableCollection<DetailOffreVM> _offres = null;
-        private String _textSearch;
+        private string _textSearch;
+        private RelayCommand _addOffre;
 
         #endregion
 
@@ -35,7 +36,7 @@ namespace WindowApp
         /// </summary>
         public MainWindowVM()
         {
-            // on appelle le mock pour initialiser une liste de produits
+            // On appelle le mock pour initialiser une liste de produits
             Refresh();
         }
 
@@ -81,7 +82,7 @@ namespace WindowApp
             }
         }
 
-        public  String TextSearch
+        public string TextSearch
         {
             get { return _textSearch; }
             set
@@ -95,6 +96,38 @@ namespace WindowApp
                 _offres.Where(o => o.Intitule.ToLower().Contains(value.ToLower())).ToList().ForEach(o => obsList.Add(o));
                 Offres = obsList;
             }
+        }
+
+        #endregion
+
+        #region Command
+
+        public ICommand AddOffre
+        {
+            get
+            {
+                if (_addOffre == null)
+                {
+                    _addOffre = new RelayCommand(() => AjouterOffre());
+                }
+                return _addOffre;
+            }
+        }
+
+        public void AjouterOffre()
+        {
+            Manager.Instance.AddOffre(new Offre
+            {
+                Date = DateTime.Now,
+                Description = "",
+                Intitule = "(empty)",
+                Responsable = "",
+                Salaire = 0,
+                StatutId = 1
+            });
+
+            Refresh();
+            OnPropertyChanged("Offres");
         }
 
         #endregion

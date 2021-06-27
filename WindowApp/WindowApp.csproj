@@ -80,6 +80,7 @@
     <Compile Include="Mock\BusinessManagerMock.cs" />
     <Compile Include="Mock\Offre.cs" />
     <Compile Include="ViewModels\Common\BaseViewModel.cs" />
+    <Compile Include="ViewModels\Common\RelayCommand.cs" />
     <Compile Include="ViewModels\DetailOffreVM.cs" />
     <Compile Include="View\DetailOffre.xaml.cs">
       <DependentUpon>DetailOffre.xaml</DependentUpon>

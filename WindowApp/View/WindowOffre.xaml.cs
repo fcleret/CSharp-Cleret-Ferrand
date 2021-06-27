@@ -24,5 +24,10 @@ namespace WindowApp
             InitializeComponent();
             this.DataContext = new MainWindowVM();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
