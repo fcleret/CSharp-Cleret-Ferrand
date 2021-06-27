@@ -4,6 +4,7 @@ using BLL.Command;
 using BLL.Query;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,12 +55,17 @@ namespace BLL
             return new OffreQuery().Offres.Where(e => e.Intitule.Contains(searchQuery)).ToList();
         }
 
-        public Offre getOffre(int id)
+        public Offre GetOffre(int id)
         {
             return new OffreQuery().Offres.Where(e => e.Id == id).FirstOrDefault();
         }
 
-        public Employe getEmploye(int id)
+        public void UpdateOffre(Offre offre)
+        {
+            new OffreCommand().Update(offre);
+        }
+
+        public Employe GetEmploye(int id)
         {
             return new EmployeQuery().Employes.Where(e => e.Id == id).FirstOrDefault();
         }

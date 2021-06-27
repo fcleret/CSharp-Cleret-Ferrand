@@ -11,27 +11,32 @@ namespace WebApp.Controllers
 {
     public class DetailController : Controller
     {
-        private Manager manager;
+        private Manager _manager;
 
         public DetailController()
         {
-            manager = Manager.Instance;
+            _manager = Manager.Instance;
         }
 
+        /// <param name="id">The offer's id</param>
         public ActionResult Index(int id)
         {
             return View(OffreViewModel.PopulateById(id));
         }
 
+        /// <summary>
+        /// Remove or add a postulation before to return the view
+        /// </summary>
+        /// <param name="id">The offer's id</param>
         public ActionResult RegisterPostulation(int id)
         {
             if (OffreViewModel.PopulateById(id).HasPostuled)
             {
-                manager.RemovePostulation(id);
+                _manager.RemovePostulation(id);
             }
             else
             {
-                manager.InsertPostulation(id);
+                _manager.InsertPostulation(id);
             }
             return View(OffreViewModel.PopulateById(id));
         }

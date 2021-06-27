@@ -8,11 +8,11 @@
 <div class="container-fluid bg-primary">
 @foreach (var postulation in Model)
 {
-    <div class="container-fluid bg-info" style="display: block; color: #333; margin: 1rem;">
+    <a href="@Url.Action("Index", "Detail", new { id = @postulation.Offre.Id })" class="container-fluid bg-info" style="display: block; color: #333; margin: 1rem;">
         <div>Date : @postulation.Date</div>
         <div>Statut : @postulation.Statut</div>
         <div>Offre : @postulation.Offre.Intitule</div>
         <div>Employé : @postulation.Employe.Prenom @postulation.Employe.Nom</div>
-    </div>
+    </a>
 }
 </div>

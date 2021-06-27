@@ -66,7 +66,7 @@
       <Name>BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Database\BiblioClass.csproj">
-      <Project>{C1A84838-0A92-47AF-9626-8E09AC519429}</Project>
+      <Project>{c1a84838-0a92-47af-9626-8e09ac519429}</Project>
       <Name>BiblioClass</Name>
     </ProjectReference>
   </ItemGroup>

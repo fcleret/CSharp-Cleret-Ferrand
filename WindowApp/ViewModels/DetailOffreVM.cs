@@ -1,4 +1,5 @@
 ﻿using BiblioClass.Entity;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,8 +45,7 @@ namespace WindowApp.ViewModels
             set 
             { 
                 _id = value;
-                OnPropertyChanged("Id");
-                OnPropertyChanged("Offres");
+                CallManager("Id");
             }
         }
 
@@ -55,8 +55,7 @@ namespace WindowApp.ViewModels
             set 
             { 
                 _date = value;
-                OnPropertyChanged("Date");
-                OnPropertyChanged("Offres");
+                CallManager("Date");
             }
         }
 
@@ -66,8 +65,7 @@ namespace WindowApp.ViewModels
             set
             {
                 _intitule = value;
-                OnPropertyChanged("Intitule");
-                OnPropertyChanged("Offres");
+                CallManager("Intitule");
             }
         }
 
@@ -77,8 +75,7 @@ namespace WindowApp.ViewModels
             set 
             { 
                 _responsable = value;
-                OnPropertyChanged("Responsable");
-                OnPropertyChanged("Offres");
+                CallManager("Responsable");
             }
         }
 
@@ -88,8 +85,7 @@ namespace WindowApp.ViewModels
             set 
             { 
                 _salaire = value;
-                OnPropertyChanged("Salaire");
-                OnPropertyChanged("Offres");
+                CallManager("Salaire");
             }
         }
 
@@ -99,9 +95,27 @@ namespace WindowApp.ViewModels
             set
             { 
                 _description = value;
-                OnPropertyChanged("Description");
-                OnPropertyChanged("Offres");
+                CallManager("Description");
             }
+        }
+
+        private void CallManager(String name)
+        {
+            OnPropertyChanged(name);
+            OnPropertyChanged("Offres");
+
+            var offre = new Offre
+            {
+                Id = _id,
+                Date = _date,
+                Description = _description,
+                Intitule = _intitule,
+                Postulations = null,
+                Statut = null,
+                Responsable = _responsable,
+                Salaire = _salaire
+            };
+            Manager.Instance.UpdateOffre(offre);
         }
 
         #endregion

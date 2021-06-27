@@ -13,9 +13,14 @@ namespace WebApp.Models.Employes
         public string Nom { get; set; }
         public string Prenom { get; set; }
 
+        /// <summary>
+        /// Transfer entity from model into a custom entity
+        /// </summary>
+        /// <param name="employeId">The employe's id</param>
+        /// <returns>The custom entity (this)</returns>
         public static EmployeViewModel PopulateById(int employeId)
         {
-            Employe employe = Manager.Instance.getEmploye(employeId);
+            Employe employe = Manager.Instance.GetEmploye(employeId);
             EmployeViewModel employeVm = new EmployeViewModel
             {
                 Id = employe.Id,

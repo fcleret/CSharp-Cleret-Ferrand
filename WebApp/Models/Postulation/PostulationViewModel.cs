@@ -16,6 +16,12 @@ namespace WebApp.Models.Postulations
         public OffreViewModel Offre { get; set; }
         public EmployeViewModel Employe { get; set; }
 
+
+        /// <summary>
+        /// Transfer entity from model into a custom entity
+        /// </summary>
+        /// <param name="id">The employe's id</param>
+        /// <returns>List with custom entities (this)</returns>
         public static List<PostulationViewModel> PopulatesById(int employeId)
         {
             List<Postulation> postulations = Manager.Instance.GetPostulationByEmployeId(employeId);

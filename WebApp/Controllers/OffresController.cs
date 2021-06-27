@@ -11,6 +11,7 @@ namespace WebApp.Controllers
 {
     public class OffresController : Controller
     {
+        /// <param name="searchBar">The text into the search bar</param>
         public ActionResult Index(string searchBar)
         {
             return View(OffreViewModel.PopulatesByContain(searchBar));

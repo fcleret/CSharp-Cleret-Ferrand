@@ -6,6 +6,7 @@ using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -34,34 +35,15 @@ namespace WindowApp
         /// </summary>
         public MainWindowVM()
         {
-
-            //Manager.Instance.AddStatut(new Statut
-            //{
-            //    Id = 8,
-            //    Libelle = "test"
-            //}); ;
-
-            //Manager.Instance.AddOffre(new Offre
-            //{
-            //    Id = 8,
-            //    Intitule = "Mascotte à DaphnéLand (Autre)",
-            //    Date = DateTime.Today,
-            //    Salaire = 1000,
-            //    Description = "test",
-            //    Responsable = "test",
-            //    StatutId = 8
-            //});
-
             // on appelle le mock pour initialiser une liste de produits
-            refresh();
+            Refresh();
         }
 
-        private void refresh()
+        private void Refresh()
         {
             _offres = new ObservableCollection<DetailOffreVM>();
             foreach (Offre o in Manager.Instance.GetAllOffres())
             {
-                Console.WriteLine($"Intitule: {o.Intitule}");
                 _offres.Add(new DetailOffreVM(o));
             }
 
@@ -83,7 +65,6 @@ namespace WindowApp
             {
                 _offres = value;
                 OnPropertyChanged("Offres");
-                // Update on Manager.Instance
             }
         }
 
@@ -108,7 +89,7 @@ namespace WindowApp
                 _textSearch = value;
                 OnPropertyChanged("TextSearch");
 
-                refresh();
+                Refresh();
 
                 ObservableCollection<DetailOffreVM> obsList = new ObservableCollection<DetailOffreVM>();
                 _offres.Where(o => o.Intitule.ToLower().Contains(value.ToLower())).ToList().ForEach(o => obsList.Add(o));

@@ -17,6 +17,11 @@ namespace WebApp.Models.Offres
         public string Responsable { get; set; }
         public bool HasPostuled { get; set; }
 
+        /// <summary>
+        /// Transfer entity from model into a custom entity if "Intitule" contains the search-bar's text
+        /// </summary>
+        /// <param name="searchBar">The search-bar's text</param>
+        /// <returns>List of custom entities (this)</returns>
         public static List<OffreViewModel> PopulatesByContain(string searchBar)
         {
             List<Offre> offres = Manager.Instance.GetOffresByContain((searchBar != null) ? searchBar : "");
@@ -29,11 +34,16 @@ namespace WebApp.Models.Offres
             return offresVm;
         }
 
+        /// <summary>
+        /// Transfer entity from model into a custom entity
+        /// </summary>
+        /// <param name="offreId">The offer's id</param>
+        /// <returns>The custom entity (this)</returns>
         public static OffreViewModel PopulateById(int offreId)
         {
             bool hasPostuled = Manager.Instance.GetPostulationByOffreId(offreId) != null;
 
-            Offre offre = Manager.Instance.getOffre(offreId);
+            Offre offre = Manager.Instance.GetOffre(offreId);
             OffreViewModel offreVm = new OffreViewModel
             {
                 Id = offre.Id,

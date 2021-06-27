@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Console
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -32,6 +32,11 @@ namespace Console
             {
                 System.Console.WriteLine(e.StackTrace);
             }
+        }
+
+        public static int Addition(int a, int b)
+        {
+            return a + b;
         }
     }
 }
